@@ -1,3 +1,22 @@
+// ==UserScript==
+// @name         Commercial Stops Cortex
+// @version      2.0
+// @description  try to take over the world!
+// @author       You
+// @match        https://logistics.amazon.com/operations/execution/*
+// @connect      mercury-webserver-na-iad.iad.proxy.amazon.com
+// @grant        GM_xmlhttpRequest
+// @downloadURL  https://axzile.corp.amazon.com/-/carthamus/download_script/commercial-stops-cortex.user.js
+// @updateURL    https://axzile.corp.amazon.com/-/carthamus/download_script/commercial-stops-cortex.user.js
+// ==/UserScript==
+//v1.0 added commercial stops when viewing routes
+//v1.1 added scheduling enforcement
+//v1.12 added to work with different timezones
+//v1.13 fixed bugs
+//v1.14 fixed update bugs
+//v.141 fixed bugs with 1.14 lol
+//v.143 fixed bugs with new version of tampermonkey
+//v2.0 changed js file location and updated to 2.0 because of crappy version number...
 
 (function () {
     'use strict';
