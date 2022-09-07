@@ -1,0 +1,47 @@
+
+(function () {
+    'use strict';
+
+
+    //var btnScript = document.createElement('BUTTON');
+    //debugger;
+
+    var lastUrl;
+    //lastUrl = document.URL.split("?")[0];
+
+    // Select the node that will be observed for mutations
+    const targetNode = document.getElementById("main");
+
+    // Options for the observer (which mutations to observe)
+    const config = { childList: true, subtree: true };
+
+    // Callback function to execute when mutations are observed
+    const callback = function(mutationsList, observer) {
+
+        var ele, sw;
+        if (document.URL.split("?")[0] == "https://logistics.amazon.com/operations/execution/routes")
+        {
+            ele = ".routes-list";
+            sw = true;
+        }
+        else
+        {
+            ele = ".stops-list-item";
+            sw = false;
+        }
+        if (document.querySelectorAll(ele)[0]) {
+
+            observer.disconnect();
+            initialize(sw);
+            lastUrl = document.URL.split("?")[0];
+        };
+    };
+
+
+    /* These are the modifications: */
+    history.pushState = ( f => function pushState(){
+        var ret = f.apply(this, arguments);
+        window.dispatchEvent(new Event('pushstate'));
+        window.dispatchEvent(new Event('locationchange'));
+        return ret;
+    })(history.pushState);
